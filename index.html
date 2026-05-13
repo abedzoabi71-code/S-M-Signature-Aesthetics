@@ -1,0 +1,2155 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>S&M Signature Aesthetics — Premium Clinic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #B8962E;
+      --gold-light: #D4AE50;
+      --gold-pale: #F5EDDA;
+      --gold-rule: rgba(184,150,46,0.25);
+      --cream: #FDFAF5;
+      --cream-2: #F7F3EB;
+      --cream-3: #EDE8DC;
+      --ink: #1A1612;
+      --ink-2: #2E2820;
+      --ink-mid: #6B6258;
+      --ink-light: #9C9489;
+      --white: #FFFFFF;
+      --rule: rgba(26,22,18,0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--cream-2); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    /* ═══ HEADER ═══ */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 48px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(253,250,245,0.0);
+      transition: background 0.5s ease, border-color 0.5s ease;
+      border-bottom: 1px solid transparent;
+    }
+    header.scrolled {
+      background: rgba(253,250,245,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header-logo img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      border-radius: 50%;
+      border: 1px solid var(--gold-rule);
+    }
+    .header-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      line-height: 1.1;
+    }
+    .header-logo-text span {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 1px;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    nav a {
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      transition: color 0.25s;
+    }
+    nav a:hover { color: var(--gold); }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .lang-select {
+      background: transparent;
+      border: 1px solid var(--rule);
+      color: var(--ink-mid);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      padding: 6px 10px;
+      border-radius: 2px;
+      cursor: pointer;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      transition: border-color 0.2s;
+    }
+    .lang-select:hover { border-color: var(--gold); }
+    .lang-select option { background: var(--cream); }
+    .btn-book-header {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--ink);
+      border: none;
+      padding: 11px 22px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-book-header:hover { background: var(--gold); }
+
+    /* Mobile menu */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--ink);
+      transition: all 0.3s;
+    }
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26,22,18,0.5);
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .mobile-overlay.active { opacity: 1; }
+    .mobile-nav {
+      position: fixed;
+      top: 0; right: 0;
+      width: 280px;
+      height: 100vh;
+      background: var(--cream);
+      border-left: 1px solid var(--rule);
+      z-index: 1000;
+      padding: 80px 36px 40px;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .mobile-nav.active { transform: translateX(0); }
+    .mobile-nav a {
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      padding: 16px 0;
+      border-bottom: 1px solid var(--rule);
+      transition: color 0.3s;
+    }
+    .mobile-nav a:hover { color: var(--gold); }
+    .mobile-nav-close {
+      position: absolute;
+      top: 22px; right: 22px;
+      background: none;
+      border: none;
+      color: var(--ink-mid);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+    .mobile-lang {
+      margin-top: auto;
+      padding-top: 24px;
+    }
+    .mobile-lang label {
+      display: block;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 8px;
+    }
+    .mobile-lang select {
+      width: 100%;
+      background: var(--cream-2);
+      border: 1px solid var(--rule);
+      color: var(--ink);
+      padding: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      outline: none;
+    }
+
+    /* ═══ HERO ═══ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+    /* Left: text */
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 160px 56px 100px 56px;
+      position: relative;
+      z-index: 2;
+    }
+    /* Decorative oversized number */
+    .hero-bg-number {
+      position: absolute;
+      top: 50%;
+      left: -40px;
+      transform: translateY(-50%);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(200px, 22vw, 320px);
+      font-weight: 700;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(184,150,46,0.1);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.3s forwards;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 5.5vw, 6rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.5s forwards;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-subtitle {
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--ink-mid);
+      max-width: 400px;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.7s forwards;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.9s forwards;
+    }
+    .btn-primary {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--white);
+      border: none;
+      padding: 16px 36px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold); transform: translateY(-2px); }
+    .btn-outline {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: transparent;
+      color: var(--ink-mid);
+      border: 1px solid var(--rule);
+      padding: 16px 36px;
+      cursor: pointer;
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* Right: visual panel */
+    .hero-right {
+      position: relative;
+      background: var(--ink);
+      overflow: hidden;
+    }
+    .hero-right-texture {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 60%, rgba(184,150,46,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 20%, rgba(184,150,46,0.07) 0%, transparent 50%);
+    }
+    /* Geometric accent lines */
+    .hero-right-lines {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .hero-right-lines svg {
+      width: 100%; height: 100%;
+    }
+    /* Stats floating over the dark panel */
+    .hero-stats-panel {
+      position: absolute;
+      bottom: 80px;
+      left: 48px;
+      z-index: 3;
+      opacity: 0;
+      animation: fadeUp 0.9s 1.1s forwards;
+    }
+    .hero-stat-row {
+      display: flex;
+      gap: 40px;
+    }
+    .hero-stat {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 16px;
+    }
+    .hero-stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-top: 6px;
+    }
+    /* Logo mark centered in dark panel */
+    .hero-logomark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      animation: fadeUp 1.2s 0.6s forwards;
+      z-index: 2;
+      text-align: center;
+    }
+    .hero-logomark img {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      border-radius: 50%;
+      opacity: 0.55;
+      filter: brightness(1.1) saturate(0.8);
+    }
+    .hero-logomark-ring {
+      position: absolute;
+      inset: -24px;
+      border: 1px solid rgba(184,150,46,0.25);
+      border-radius: 50%;
+      animation: spin 20s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    /* Gold corner accent */
+    .hero-corner {
+      position: absolute;
+      top: 48px;
+      right: 48px;
+      width: 60px;
+      height: 60px;
+      border-top: 1px solid var(--gold-light);
+      border-right: 1px solid var(--gold-light);
+      opacity: 0.5;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ═══ MARQUEE ═══ */
+    .marquee-strip {
+      background: var(--cream-3);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 13px 0;
+      overflow: hidden;
+      position: relative;
+      z-index: 10;
+    }
+    .marquee-track {
+      display: flex;
+      animation: marquee 24s linear infinite;
+      white-space: nowrap;
+    }
+    .marquee-item {
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      padding: 0 28px;
+      flex-shrink: 0;
+    }
+    .marquee-item strong {
+      color: var(--gold);
+      font-weight: 500;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ═══ SECTIONS BASE ═══ */
+    section { position: relative; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    .section-label {
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    /* ═══ OVERVIEW ═══ */
+    #overview {
+      padding: 0;
+      background: var(--cream);
+    }
+    .overview-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+    }
+    /* Left: large background image area */
+    .overview-visual-col {
+      position: relative;
+      background: var(--cream-2);
+      overflow: hidden;
+    }
+    .overview-img-fill {
+      width: 100%;
+      height: 100%;
+      min-height: 640px;
+      background:
+        radial-gradient(ellipse at 60% 40%, rgba(184,150,46,0.08) 0%, transparent 60%),
+        linear-gradient(160deg, var(--cream-2) 0%, var(--cream-3) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .overview-logo-display {
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+      border-radius: 50%;
+      opacity: 0.3;
+      filter: sepia(30%) brightness(0.9);
+    }
+    /* Floating pill stat */
+    .overview-stat-pill {
+      position: absolute;
+      bottom: 48px;
+      right: -1px;
+      background: var(--gold);
+      color: var(--white);
+      padding: 20px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .overview-stat-pill-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      line-height: 1;
+    }
+    .overview-stat-pill-txt {
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+    /* Thin vertical rule decoration */
+    .overview-v-rule {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(180deg, transparent 0%, var(--rule) 30%, var(--rule) 70%, transparent 100%);
+    }
+    /* Right: text col */
+    .overview-text-col {
+      padding: 100px 72px 100px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .overview-text-col p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 2;
+      color: var(--ink-mid);
+      margin: 24px 0 40px;
+    }
+    /* Pillars: horizontal list */
+    .overview-pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--rule);
+      margin-top: 8px;
+    }
+    .pillar {
+      padding: 24px 22px;
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.3s;
+      position: relative;
+    }
+    .pillar:nth-child(odd) { border-right: 1px solid var(--rule); }
+    .pillar:nth-child(3),
+    .pillar:nth-child(4) { border-bottom: none; }
+    .pillar:hover { background: var(--gold-pale); }
+    .pillar-icon {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+    .pillar-title {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .pillar-desc {
+      font-size: 0.76rem;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.65;
+    }
+
+    /* ═══ SERVICES ═══ */
+    #services {
+      padding: 120px 0;
+      background: var(--ink);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Subtle texture */
+    #services::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 20%, rgba(184,150,46,0.06) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .services-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 72px;
+    }
+    .services-header .section-label { color: var(--gold-light); }
+    .services-header .section-label::before { background: var(--gold-light); }
+    .services-header .section-title { color: var(--white); }
+    .services-header p {
+      max-width: 260px;
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.38);
+      line-height: 1.9;
+    }
+    /* Numbered list layout — editorial, not card grid */
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .service-item {
+      padding: 44px 40px 44px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-right: 1px solid rgba(255,255,255,0.08);
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 24px;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .service-item:nth-child(even) {
+      padding-left: 40px;
+      padding-right: 0;
+      border-right: none;
+    }
+    .service-item::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.5s ease;
+    }
+    .service-item:hover::after { width: 100%; }
+    .service-item:hover { background: rgba(184,150,46,0.04); }
+    .service-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 400;
+      color: rgba(184,150,46,0.18);
+      line-height: 1;
+      padding-top: 4px;
+    }
+    .service-body {}
+    .service-icon {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+    .service-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .service-desc {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.42);
+      line-height: 1.85;
+    }
+    .service-tag {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid rgba(184,150,46,0.3);
+      padding-bottom: 2px;
+      transition: border-color 0.3s;
+    }
+    .service-item:hover .service-tag { border-color: var(--gold); }
+
+    /* ═══ RESULTS ═══ */
+    #results {
+      padding: 120px 0;
+      background: var(--ink);
+    }
+    .results-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 64px;
+    }
+    .results-header .section-label { color: var(--gold-light); }
+    .results-header .section-label::before { background: var(--gold-light); }
+    .results-header .section-title { color: var(--white); }
+    .results-header .section-title em { color: var(--gold-light); }
+    .results-header p {
+      max-width: 300px;
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.85;
+    }
+    /* 3-column cards */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .result-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color 0.35s, transform 0.35s;
+    }
+    .result-card:hover { border-color: rgba(184,150,46,0.4); transform: translateY(-5px); }
+
+    /* Before / After split upload zone */
+    .result-ba {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      position: relative;
+    }
+    .result-ba-divider {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: var(--gold);
+      z-index: 3;
+      transform: translateX(-50%);
+    }
+    .result-ba-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 4;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 0.5rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .result-photo {
+      aspect-ratio: 3/4;
+      background: rgba(255,255,255,0.04);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .result-photo input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+    }
+    .result-photo img.uploaded-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+    .result-photo-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.2);
+      pointer-events: none;
+      z-index: 0;
+      transition: color 0.25s, background 0.25s;
+    }
+    .result-photo:hover .result-photo-placeholder { color: rgba(184,150,46,0.6); background: rgba(184,150,46,0.04); }
+    .result-photo-placeholder .ph-icon { font-size: 1.6rem; }
+    .result-photo-placeholder .ph-label {
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    /* "Before" label top-left, "After" top-right */
+    .result-photo-tag {
+      position: absolute;
+      top: 10px;
+      font-size: 0.52rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      background: rgba(0,0,0,0.45);
+      padding: 3px 8px;
+      border-radius: 4px;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .result-photo:first-child .result-photo-tag { left: 10px; }
+    .result-photo:last-child .result-photo-tag { right: 10px; }
+
+    .result-info {
+      padding: 18px 20px 22px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .result-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .result-badge {
+      background: rgba(184,150,46,0.15);
+      border: 1px solid rgba(184,150,46,0.3);
+      color: var(--gold-light);
+      font-size: 0.52rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+    .result-treatment {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 5px;
+    }
+    .result-detail {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.05em;
+    }
+    .results-note {
+      margin-top: 40px;
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.05em;
+    }
+
+    /* ═══ SCROLL REVEAL ═══ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+    .reveal-delay-6 { transition-delay: 0.6s; }
+
+    /* ═══ GLOBAL SOFTENING — soft corners everywhere except services ═══ */
+    .btn-primary, .btn-outline, .btn-book-header { border-radius: 6px; }
+    .cal-widget { border-radius: 12px; }
+    .cal-slot { border-radius: 6px; }
+    .cal-nav-btn { border-radius: 6px; }
+    .result-card { border-radius: 12px; overflow: hidden; }
+    .overview-pillars { border-radius: 10px; overflow: hidden; }
+    .pillar:nth-child(1) { border-radius: 10px 0 0 0; }
+    .pillar:nth-child(2) { border-radius: 0 10px 0 0; }
+    .pillar:nth-child(3) { border-radius: 0 0 0 10px; }
+    .pillar:nth-child(4) { border-radius: 0 0 10px 0; }
+    .mobile-nav { border-radius: 16px 0 0 16px; }
+    .booking-contact { border-radius: 10px; }
+    .overview-stat-pill { border-radius: 0 10px 10px 0; }
+    .faq-icon { border-radius: 50%; }
+
+    /* ═══ SMALLER BUTTONS ═══ */
+    .btn-primary, .btn-outline {
+      padding: 11px 24px;
+      font-size: 0.63rem;
+    }
+    .btn-book-header {
+      padding: 9px 18px;
+      font-size: 0.62rem;
+    }
+
+    /* ═══ BOOKING ═══ */
+    #booking {
+      padding: 120px 0;
+      background: var(--cream);
+    }
+    .booking-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .booking-info .section-title { margin-bottom: 24px; }
+    .booking-info p {
+      font-size: 0.82rem;
+      font-weight: 300;
+      line-height: 2;
+      color: var(--ink-mid);
+      margin-bottom: 36px;
+    }
+    .booking-details-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .booking-details-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 0.78rem;
+      color: var(--ink-mid);
+      line-height: 1.7;
+    }
+    .booking-details-list li::before {
+      content: '◆';
+      color: var(--gold);
+      font-size: 0.45rem;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .booking-contact {
+      margin-top: 48px;
+      padding: 24px 28px;
+      border: 1px solid var(--rule);
+      background: var(--cream-2);
+    }
+    .booking-contact-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .booking-contact a {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--ink-mid);
+      margin-bottom: 4px;
+      transition: color 0.3s;
+    }
+    .booking-contact a:hover { color: var(--gold); }
+
+    /* Calendar widget */
+    .cal-widget {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      padding: 36px;
+      box-shadow: 0 4px 32px rgba(26,22,18,0.06);
+    }
+    .cal-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .cal-month {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--ink);
+    }
+    .cal-nav { display: flex; gap: 8px; }
+    .cal-nav-btn {
+      background: transparent;
+      border: 1px solid var(--rule);
+      color: var(--gold);
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .cal-nav-btn:hover { background: var(--gold-pale); border-color: var(--gold); }
+    .cal-nav-btn:disabled { opacity: 0.25; cursor: not-allowed; }
+    .cal-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+    .cal-wd {
+      text-align: center;
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(184,150,46,0.7);
+      padding: 8px 4px;
+    }
+    .cal-dates {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+    .cal-day {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 400;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+      color: var(--ink-mid);
+      border-radius: 50%;
+    }
+    .cal-day.empty { cursor: default; }
+    .cal-day.past { color: var(--ink-light); opacity: 0.4; cursor: not-allowed; }
+    .cal-day.unavailable { color: var(--ink-light); opacity: 0.3; cursor: not-allowed; }
+    .cal-day.available:hover { background: var(--gold-pale); color: var(--gold); }
+    .cal-day.available::after {
+      content: '';
+      position: absolute;
+      bottom: 4px; left: 50%;
+      transform: translateX(-50%);
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+    .cal-day.selected { background: var(--gold); color: var(--white); font-weight: 600; }
+    .cal-day.selected::after { background: var(--white); }
+    .cal-day.today { outline: 1px solid var(--gold-rule); }
+    .cal-times {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+      display: none;
+    }
+    .cal-times.active { display: block; }
+    .cal-times-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .cal-slots {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    .cal-slot {
+      padding: 10px 8px;
+      border: 1px solid var(--rule);
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--ink-mid);
+      cursor: pointer;
+      transition: all 0.2s;
+      background: var(--cream);
+    }
+    .cal-slot:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-pale); }
+    .cal-slot.selected { background: var(--gold); border-color: var(--gold); color: var(--white); font-weight: 600; }
+    .cal-confirm { margin-top: 20px; display: none; }
+    .cal-confirm.active { display: block; }
+    .cal-confirm-btn {
+      width: 100%;
+      background: var(--ink);
+      color: var(--white);
+      border: none;
+      padding: 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s;
+      border-radius: 6px;
+    }
+    .cal-confirm-btn:hover { background: var(--gold); }
+    .cal-note {
+      margin-top: 14px;
+      font-size: 0.65rem;
+      color: var(--ink-light);
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+
+    /* ═══ FAQS ═══ */
+    #faqs {
+      padding: 120px 0;
+      background: var(--cream-2);
+    }
+    .faqs-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .faqs-intro p {
+      font-size: 0.82rem;
+      font-weight: 300;
+      line-height: 2;
+      color: var(--ink-mid);
+      margin-top: 24px;
+    }
+    .faq-list { display: flex; flex-direction: column; }
+    .faq-item { border-bottom: 1px solid var(--rule); }
+    .faq-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 22px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      text-align: left;
+    }
+    .faq-q {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.08rem;
+      font-weight: 400;
+      color: var(--ink);
+      flex: 1;
+      transition: color 0.3s;
+    }
+    .faq-item.expanded .faq-q { color: var(--gold); }
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--gold);
+      font-size: 1.1rem;
+      font-weight: 300;
+      transition: all 0.3s;
+      line-height: 1;
+    }
+    .faq-item.expanded .faq-icon { background: var(--gold); color: var(--white); border-color: var(--gold); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-item.expanded .faq-answer { max-height: 300px; }
+    .faq-answer-inner {
+      padding-bottom: 22px;
+      font-size: 0.82rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--ink-mid);
+    }
+
+    /* ═══ CONTACT ═══ */
+    #contact {
+      padding: 120px 0;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 64px;
+    }
+    .contact-card {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      padding: 40px 32px;
+      border-radius: 12px;
+      transition: background 0.3s, border-color 0.3s, transform 0.3s;
+    }
+    .contact-card:hover { background: var(--gold-pale); border-color: var(--gold-rule); transform: translateY(-4px); }
+    .contact-card-icon { font-size: 2rem; margin-bottom: 20px; }
+    .contact-card-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .contact-card-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .contact-card-sub {
+      font-size: 0.73rem;
+      color: var(--ink-light);
+      margin-top: 8px;
+      line-height: 1.6;
+    }
+
+    /* ═══ FOOTER ═══ */
+    footer {
+      background: var(--ink);
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+    }
+    .footer-rights {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.25);
+    }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.35);
+      transition: all 0.3s;
+    }
+    .footer-social a:hover { border-color: var(--gold); color: var(--gold); background: rgba(184,150,46,0.08); }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 1024px) {
+      .overview-wrapper { grid-template-columns: 1fr; }
+      .overview-visual-col { display: none; }
+      .overview-text-col { padding: 80px 48px; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-right { height: 320px; }
+      .hero-left { padding: 120px 40px 56px; }
+      .services-list { grid-template-columns: 1fr; }
+      .service-item:nth-child(even) { border-right: none; border-left: none; padding-left: 0; }
+      .service-item { border-right: none; }
+      .results-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      header { padding: 0 20px; height: 56px; }
+      nav, .btn-book-header, .lang-select { display: none; }
+      .menu-toggle { display: flex !important; }
+      .hero-left { padding: 90px 20px 40px; }
+      .hero-title { font-size: clamp(2rem, 9vw, 3.2rem); }
+      .hero-subtitle { font-size: 0.82rem; }
+      .hero-stats-panel { left: 24px; bottom: 24px; }
+      .hero-stat-number { font-size: 1.8rem; }
+      .container { padding: 0 20px; }
+      #overview, #services, #results, #booking, #faqs, #contact { padding: 64px 0; }
+      .services-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .results-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .results-grid { grid-template-columns: 1fr; }
+      .booking-layout { grid-template-columns: 1fr; gap: 32px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 12px; }
+      footer { flex-direction: column; gap: 20px; text-align: center; padding: 32px 20px; }
+      .faqs-layout { grid-template-columns: 1fr; gap: 32px; }
+      .overview-pillars { grid-template-columns: 1fr; }
+      .pillar:nth-child(3), .pillar:nth-child(4) { border-bottom: 1px solid var(--rule); }
+      .pillar:nth-child(4) { border-bottom: none; }
+      .cal-slots { grid-template-columns: repeat(3, 1fr); }
+      .btn-primary, .btn-outline { padding: 10px 18px; font-size: 0.6rem; }
+    }
+    @media (max-width: 480px) {
+      .hero-stats-panel { display: none; }
+      .cal-slots { grid-template-columns: repeat(2, 1fr); }
+      .results-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HEADER ═══ -->
+  <header id="header">
+    <div class="header-logo">
+      <img src="S&M.jpg" alt="S&M Signature Aesthetics" id="logoImg">
+      <div class="header-logo-text">
+        S&M Signature
+        <span>Aesthetics</span>
+      </div>
+    </div>
+    <nav>
+      <a href="#overview" data-i18n="nav_overview">Overview</a>
+      <a href="#services" data-i18n="nav_services">Services</a>
+      <a href="#results" data-i18n="nav_results">Results</a>
+      <a href="#booking" data-i18n="nav_book">Book</a>
+      <a href="#faqs" data-i18n="nav_faqs">FAQs</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+    </nav>
+    <div class="header-right">
+      <select class="lang-select" id="lang" aria-label="Language">
+        <option value="ar">العربية</option>
+        <option value="he">עברית</option>
+        <option value="en">English</option>
+      </select>
+      <button class="btn-book-header" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" data-i18n="nav_book">Book Now</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" style="display:none">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile overlay + nav -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileClose">×</button>
+    <a href="#overview" data-i18n="nav_overview">Overview</a>
+    <a href="#services" data-i18n="nav_services">Services</a>
+    <a href="#results" data-i18n="nav_results">Results</a>
+    <a href="#booking" data-i18n="nav_book">Book</a>
+    <a href="#faqs" data-i18n="nav_faqs">FAQs</a>
+    <a href="#contact" data-i18n="nav_contact">Contact</a>
+    <div class="mobile-lang">
+      <label>Language</label>
+      <select id="mobileLang">
+        <option value="ar">العربية</option>
+        <option value="he">עברית</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <!-- Left: text side (cream) -->
+    <div class="hero-left">
+      <div class="hero-bg-number">S</div>
+      <div class="hero-eyebrow" data-i18n="hero_eyebrow">Certified Aesthetic Medicine</div>
+      <h1 class="hero-title">
+        <span data-i18n="hero_line1">Reveal Your</span><br>
+        <em data-i18n="hero_line2">Best Self</em><br>
+        <span data-i18n="hero_line3">with Confidence</span>
+      </h1>
+      <p class="hero-subtitle" data-i18n="hero_sub">Botox, fillers, skin rejuvenation &amp; advanced aesthetic treatments — performed by certified specialists in a luxurious, private clinic setting.</p>
+      <div class="hero-cta">
+        <button class="btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" data-i18n="hero_cta">Book a Consultation</button>
+        <button class="btn-outline" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})" data-i18n="hero_cta2">View Services</button>
+      </div>
+    </div>
+    <!-- Right: dark visual side -->
+    <div class="hero-right">
+      <div class="hero-right-texture"></div>
+      <div class="hero-right-lines">
+        <svg viewBox="0 0 600 900" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="200" x2="600" y2="500" stroke="rgba(184,150,46,0.07)" stroke-width="1"/>
+          <line x1="600" y1="150" x2="0" y2="600" stroke="rgba(184,150,46,0.05)" stroke-width="1"/>
+          <circle cx="300" cy="450" r="180" fill="none" stroke="rgba(184,150,46,0.06)" stroke-width="1"/>
+          <circle cx="300" cy="450" r="220" fill="none" stroke="rgba(184,150,46,0.04)" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="hero-corner"></div>
+      <div class="hero-logomark">
+        <div style="position:relative; width:140px; height:140px; margin:0 auto;">
+          <div class="hero-logomark-ring"></div>
+          <img src="data:image/jpeg;base64,LOGO_BASE64_PLACEHOLDER" alt="" id="heroLogoImg" style="width:140px;height:140px;object-fit:contain;border-radius:50%;opacity:0.55;">
+        </div>
+      </div>
+      <div class="hero-stats-panel">
+        <div class="hero-stat-row">
+          <div class="hero-stat">
+            <div class="hero-stat-number">500+</div>
+            <div class="hero-stat-label" data-i18n="stat1">Happy Clients</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number">5★</div>
+            <div class="hero-stat-label" data-i18n="stat2">Rated Clinic</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number">10+</div>
+            <div class="hero-stat-label" data-i18n="stat3">Treatments</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MARQUEE ═══ -->
+  <div class="marquee-strip">
+    <div class="marquee-track" id="marqueeTrack">
+      <span class="marquee-item">✦ Botox</span>
+      <span class="marquee-item">✦ Lip Fillers</span>
+      <span class="marquee-item">✦ Microneedling</span>
+      <span class="marquee-item">✦ Salmon DNA Therapy</span>
+      <span class="marquee-item">✦ Skin Tightening</span>
+      <span class="marquee-item">✦ Anti-Aging</span>
+      <span class="marquee-item">✦ Hair Restoration</span>
+      <span class="marquee-item">✦ Face Contouring</span>
+      <span class="marquee-item">✦ Botox</span>
+      <span class="marquee-item">✦ Lip Fillers</span>
+      <span class="marquee-item">✦ Microneedling</span>
+      <span class="marquee-item">✦ Salmon DNA Therapy</span>
+      <span class="marquee-item">✦ Skin Tightening</span>
+      <span class="marquee-item">✦ Anti-Aging</span>
+      <span class="marquee-item">✦ Hair Restoration</span>
+      <span class="marquee-item">✦ Face Contouring</span>
+    </div>
+  </div>
+
+  <!-- ═══ OVERVIEW ═══ -->
+  <section id="overview">
+    <div class="overview-wrapper">
+      <!-- Left: visual column -->
+      <div class="overview-visual-col reveal">
+        <div class="overview-img-fill">
+          <img src="data:image/jpeg;base64,LOGO_BASE64_PLACEHOLDER" alt="S&M Aesthetics" class="overview-logo-display" id="overviewLogo">
+        </div>
+        <div class="overview-stat-pill">
+          <div class="overview-stat-pill-num">5★</div>
+          <div class="overview-stat-pill-txt">Top Rated Clinic</div>
+        </div>
+        <div class="overview-v-rule"></div>
+      </div>
+      <!-- Right: text column -->
+      <div class="overview-text-col">
+        <div class="section-label reveal" data-i18n="about_label">About the Clinic</div>
+        <h2 class="section-title reveal reveal-delay-1" data-i18n="about_title">Precision Beauty.<br><em>Science-Backed</em><br>Results.</h2>
+        <p class="reveal reveal-delay-2" data-i18n="about_body">S&M Signature Aesthetics is a premium medical aesthetic clinic offering the latest non-surgical treatments. Our certified specialists combine medical expertise with an artistic eye — delivering natural, stunning results tailored to each individual.</p>
+        <div class="overview-pillars reveal reveal-delay-3">
+          <div class="pillar">
+            <div class="pillar-icon">🎓</div>
+            <div class="pillar-title" data-i18n="p1_title">Certified Doctors</div>
+            <div class="pillar-desc" data-i18n="p1_desc">Board-certified specialists with years of aesthetic medicine experience.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">✨</div>
+            <div class="pillar-title" data-i18n="p2_title">Natural Results</div>
+            <div class="pillar-desc" data-i18n="p2_desc">Subtle, harmonious enhancements that highlight your natural beauty.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🔬</div>
+            <div class="pillar-title" data-i18n="p3_title">Latest Technology</div>
+            <div class="pillar-desc" data-i18n="p3_desc">State-of-the-art equipment and FDA-approved treatments only.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🌿</div>
+            <div class="pillar-title" data-i18n="p4_title">Premium Products</div>
+            <div class="pillar-desc" data-i18n="p4_desc">Top-grade fillers, toxins, and skincare formulations.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SERVICES ═══ -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header">
+        <div>
+          <div class="section-label reveal" data-i18n="services_label">What We Offer</div>
+          <h2 class="section-title reveal reveal-delay-1" data-i18n="services_title">Our <em>Treatments</em></h2>
+        </div>
+        <p class="reveal reveal-delay-2" data-i18n="services_sub">Every treatment is customized to your unique facial structure and aesthetic goals.</p>
+      </div>
+      <div class="services-list">
+        <div class="service-item reveal">
+          <div class="service-num">01</div>
+          <div class="service-body">
+            <div class="service-icon">💉</div>
+            <div class="service-name" data-i18n="s1_name">Botox &amp; Toxins</div>
+            <div class="service-desc" data-i18n="s1_desc">Smooth fine lines and wrinkles with precision-placed injections. Forehead, frown lines, crow's feet — results last 4–6 months.</div>
+            <span class="service-tag">Learn More →</span>
+          </div>
+        </div>
+        <div class="service-item reveal reveal-delay-1">
+          <div class="service-num">02</div>
+          <div class="service-body">
+            <div class="service-icon">💋</div>
+            <div class="service-name" data-i18n="s2_name">Dermal Fillers</div>
+            <div class="service-desc" data-i18n="s2_desc">Hyaluronic acid fillers for lips, cheeks, jawline, and under-eyes. Sculpt, volumize, and restore youthful contours.</div>
+            <span class="service-tag">Learn More →</span>
+          </div>
+        </div>
+        <div class="service-item reveal reveal-delay-1">
+          <div class="service-num">03</div>
+          <div class="service-body">
+            <div class="service-icon">✨</div>
+            <div class="service-name" data-i18n="s3_name">Microneedling</div>
+            <div class="service-desc" data-i18n="s3_desc">Advanced collagen-induction therapy. Improves texture, pores, scars, and overall skin quality over time.</div>
+            <span class="service-tag">Learn More →</span>
+          </div>
+        </div>
+        <div class="service-item reveal reveal-delay-2">
+          <div class="service-num">04</div>
+          <div class="service-body">
+            <div class="service-icon">🧬</div>
+            <div class="service-name" data-i18n="s4_name">Salmon DNA Therapy</div>
+            <div class="service-desc" data-i18n="s4_desc">Polynucleotide injections that repair and regenerate skin at a cellular level. Targets fine lines and deep hydration.</div>
+            <span class="service-tag">Learn More →</span>
+          </div>
+        </div>
+        <div class="service-item reveal reveal-delay-2">
+          <div class="service-num">05</div>
+          <div class="service-body">
+            <div class="service-icon">💆</div>
+            <div class="service-name" data-i18n="s5_name">Skin Tightening</div>
+            <div class="service-desc" data-i18n="s5_desc">Non-invasive options to firm sagging skin. Lift your face and neck without surgery or downtime.</div>
+            <span class="service-tag">Learn More →</span>
+          </div>
+        </div>
+        <div class="service-item reveal reveal-delay-3">
+          <div class="service-num">06</div>
+          <div class="service-body">
+            <div class="service-icon">🌿</div>
+            <div class="service-name" data-i18n="s6_name">Hair Restoration</div>
+            <div class="service-desc" data-i18n="s6_desc">PRP and mesotherapy treatments to stimulate hair follicles and promote healthy regrowth for men and women.</div>
+            <span class="service-tag">Learn More →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ RESULTS ═══ -->
+  <section id="results">
+    <div class="container">
+      <div class="results-header">
+        <div>
+          <div class="section-label reveal" data-i18n="results_label">Real Transformations</div>
+          <h2 class="section-title reveal reveal-delay-1" data-i18n="results_title">Before &amp; <em>After</em></h2>
+        </div>
+        <p class="reveal reveal-delay-2" data-i18n="results_sub">Each result represents a journey toward greater confidence. Our natural approach ensures stunning, harmonious results.</p>
+      </div>
+      <div class="results-grid">
+
+        <!-- Card 1 -->
+        <div class="result-card reveal">
+          <div class="result-ba">
+            <div class="result-photo" onclick="this.querySelector('input').click()">
+              <span class="result-photo-tag">Before</span>
+              <input type="file" accept="image/*" onchange="previewPhoto(this)">
+              <img class="uploaded-img" style="display:none">
+              <div class="result-photo-placeholder">
+                <div class="ph-icon">📷</div>
+                <div class="ph-label">Add Photo</div>
+              </div>
+            </div>
+            <div class="result-photo" onclick="this.querySelector('input').click()">
+              <span class="result-photo-tag">After</span>
+              <input type="file" accept="image/*" onchange="previewPhoto(this)">
+              <img class="uploaded-img" style="display:none">
+              <div class="result-photo-placeholder">
+                <div class="ph-icon">📷</div>
+                <div class="ph-label">Add Photo</div>
+              </div>
+            </div>
+            <div class="result-ba-divider"></div>
+            <div class="result-ba-label">B · A</div>
+          </div>
+          <div class="result-info">
+            <div class="result-badge-row">
+              <span class="result-badge">Lip Filler</span>
+            </div>
+            <div class="result-treatment" data-i18n="r1_name">Lip Augmentation</div>
+            <div class="result-detail" data-i18n="r1_detail">Natural volume · 1 session · 0 downtime</div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="result-card reveal reveal-delay-2">
+          <div class="result-ba">
+            <div class="result-photo" onclick="this.querySelector('input').click()">
+              <span class="result-photo-tag">Before</span>
+              <input type="file" accept="image/*" onchange="previewPhoto(this)">
+              <img class="uploaded-img" style="display:none">
+              <div class="result-photo-placeholder">
+                <div class="ph-icon">📷</div>
+                <div class="ph-label">Add Photo</div>
+              </div>
+            </div>
+            <div class="result-photo" onclick="this.querySelector('input').click()">
+              <span class="result-photo-tag">After</span>
+              <input type="file" accept="image/*" onchange="previewPhoto(this)">
+              <img class="uploaded-img" style="display:none">
+              <div class="result-photo-placeholder">
+                <div class="ph-icon">📷</div>
+                <div class="ph-label">Add Photo</div>
+              </div>
+            </div>
+            <div class="result-ba-divider"></div>
+            <div class="result-ba-label">B · A</div>
+          </div>
+          <div class="result-info">
+            <div class="result-badge-row">
+              <span class="result-badge">Botox</span>
+            </div>
+            <div class="result-treatment" data-i18n="r2_name">Forehead Smoothing</div>
+            <div class="result-detail" data-i18n="r2_detail">Line removal · 1 session · 2 weeks result</div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="result-card reveal reveal-delay-3">
+          <div class="result-ba">
+            <div class="result-photo" onclick="this.querySelector('input').click()">
+              <span class="result-photo-tag">Before</span>
+              <input type="file" accept="image/*" onchange="previewPhoto(this)">
+              <img class="uploaded-img" style="display:none">
+              <div class="result-photo-placeholder">
+                <div class="ph-icon">📷</div>
+                <div class="ph-label">Add Photo</div>
+              </div>
+            </div>
+            <div class="result-photo" onclick="this.querySelector('input').click()">
+              <span class="result-photo-tag">After</span>
+              <input type="file" accept="image/*" onchange="previewPhoto(this)">
+              <img class="uploaded-img" style="display:none">
+              <div class="result-photo-placeholder">
+                <div class="ph-icon">📷</div>
+                <div class="ph-label">Add Photo</div>
+              </div>
+            </div>
+            <div class="result-ba-divider"></div>
+            <div class="result-ba-label">B · A</div>
+          </div>
+          <div class="result-info">
+            <div class="result-badge-row">
+              <span class="result-badge">Hair Restoration</span>
+            </div>
+            <div class="result-treatment" data-i18n="r3_name">Hair Regrowth</div>
+            <div class="result-detail" data-i18n="r3_detail">PRP treatment · 3 sessions · visible growth</div>
+          </div>
+        </div>
+
+      </div>
+      <p class="results-note reveal" data-i18n="results_note">* Individual results may vary. All treatments performed by certified specialists.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ BOOKING ═══════════════ -->
+  <section id="booking">
+    <div class="container">
+      <div class="booking-layout">
+        <div class="booking-info">
+          <div class="section-label reveal" data-i18n="booking_label">Reserve Your Visit</div>
+          <h2 class="section-title reveal reveal-delay-1" data-i18n="booking_title">Book Your<br><em>Appointment</em></h2>
+          <p class="reveal reveal-delay-2" data-i18n="booking_body">Select a date and time that suits you. All consultations are private, confidential, and with no commitment required.</p>
+
+          <ul class="booking-details-list reveal reveal-delay-2">
+            <li data-i18n="bd1">Free initial consultation — no obligation</li>
+            <li data-i18n="bd2">Private, discreet clinic environment</li>
+            <li data-i18n="bd3">Treatment plan tailored to your goals</li>
+            <li data-i18n="bd4">Confirmation sent via WhatsApp or email</li>
+            <li data-i18n="bd5">Easy reschedule or cancel anytime</li>
+          </ul>
+
+          <div class="booking-contact reveal reveal-delay-3">
+            <div class="booking-contact-label" data-i18n="prefer_call">Prefer to call first?</div>
+            <a href="tel:0549400185">📞 054-940-0185</a>
+            <a href="https://instagram.com/sm.signature.aesthetics" target="_blank">📸 @sm.signature.aesthetics</a>
+          </div>
+        </div>
+
+        <div class="cal-widget reveal reveal-delay-2">
+          <div class="cal-top">
+            <div class="cal-month" id="calMonth">May 2026</div>
+            <div class="cal-nav">
+              <button class="cal-nav-btn" id="calPrev">‹</button>
+              <button class="cal-nav-btn" id="calNext">›</button>
+            </div>
+          </div>
+          <div class="cal-weekdays" id="calWeekdays">
+            <div class="cal-wd" data-i18n="d_sun">Sun</div>
+            <div class="cal-wd" data-i18n="d_mon">Mon</div>
+            <div class="cal-wd" data-i18n="d_tue">Tue</div>
+            <div class="cal-wd" data-i18n="d_wed">Wed</div>
+            <div class="cal-wd" data-i18n="d_thu">Thu</div>
+            <div class="cal-wd" data-i18n="d_fri">Fri</div>
+            <div class="cal-wd" data-i18n="d_sat">Sat</div>
+          </div>
+          <div class="cal-dates" id="calDates"></div>
+          <div class="cal-times" id="calTimes">
+            <div class="cal-times-label" data-i18n="select_time">Select a time</div>
+            <div class="cal-slots" id="calSlots"></div>
+          </div>
+          <div class="cal-confirm" id="calConfirm">
+            <button class="cal-confirm-btn" data-i18n="confirm_btn">Confirm Appointment</button>
+          </div>
+          <div class="cal-note" data-i18n="cal_note">* Preview only. Booking confirmed via WhatsApp.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FAQS ═══════════════ -->
+  <section id="faqs">
+    <div class="container">
+      <div class="faqs-layout">
+        <div class="faqs-intro">
+          <div class="section-label reveal" data-i18n="faq_label">Common Questions</div>
+          <h2 class="section-title reveal reveal-delay-1" data-i18n="faq_title">FAQs</h2>
+          <p class="reveal reveal-delay-2" data-i18n="faq_sub">Everything you need to know before your first visit. Still have questions? Call or message us directly.</p>
+        </div>
+
+        <div class="faq-list reveal reveal-delay-1">
+          <div class="faq-item">
+            <button class="faq-btn" type="button">
+              <span class="faq-q" data-i18n="fq1">Does Botox hurt?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner" data-i18n="fa1">Botox injections involve minimal discomfort — most clients describe a tiny pinch. We use ultra-fine needles and can apply topical numbing cream beforehand for added comfort.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-btn" type="button">
+              <span class="faq-q" data-i18n="fq2">How long do results last?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner" data-i18n="fa2">Botox results typically last 4–6 months. Dermal fillers can last 9–18 months depending on the area. Skin treatments like microneedling provide cumulative benefits that continue improving with sessions.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-btn" type="button">
+              <span class="faq-q" data-i18n="fq3">Is there any downtime?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner" data-i18n="fa3">Most treatments are non-invasive with zero to minimal downtime. Botox and fillers allow you to return to daily activities immediately. Some temporary redness or swelling can occur for a few hours.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-btn" type="button">
+              <span class="faq-q" data-i18n="fq4">Are the treatments safe?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner" data-i18n="fa4">Absolutely. All treatments are performed by certified medical professionals using FDA-approved products. We conduct a thorough consultation and medical review before any procedure to ensure your safety.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-btn" type="button">
+              <span class="faq-q" data-i18n="fq5">How do I prepare for my appointment?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner" data-i18n="fa5">Arrive with a clean face, avoid blood-thinning medications (aspirin, ibuprofen) 3 days prior if possible, and avoid alcohol 24 hours before. We'll provide specific instructions based on your planned treatment.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-btn" type="button">
+              <span class="faq-q" data-i18n="fq6">What is your cancellation policy?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner" data-i18n="fa6">We kindly ask for at least 24 hours notice for cancellations or rescheduling. Contact us via WhatsApp and we'll find you the next available slot with no hassle.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONTACT ═══════════════ -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-label reveal" data-i18n="contact_label">Get In Touch</div>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n="contact_title">Visit Us or<br><em>Contact Us</em></h2>
+
+      <div class="contact-grid">
+        <div class="contact-card reveal">
+          <div class="contact-card-icon">📱</div>
+          <div class="contact-card-label" data-i18n="c_phone">Phone / WhatsApp</div>
+          <div class="contact-card-value">054-940-0185</div>
+          <div class="contact-card-sub" data-i18n="c_phone_sub">Available Sun–Fri, 9am–7pm</div>
+        </div>
+        <div class="contact-card reveal reveal-delay-2">
+          <div class="contact-card-icon">📍</div>
+          <div class="contact-card-label" data-i18n="c_location">Location</div>
+          <div class="contact-card-value" data-i18n="c_location_val">Kafr Qara, Binyamina Area</div>
+          <div class="contact-card-sub" data-i18n="c_location_sub">Private clinic · by appointment only</div>
+        </div>
+        <div class="contact-card reveal reveal-delay-3">
+          <div class="contact-card-icon">📸</div>
+          <div class="contact-card-label">Instagram</div>
+          <div class="contact-card-value" style="font-size:1rem;">@sm.signature<br>.aesthetics</div>
+          <div class="contact-card-sub" data-i18n="c_ig_sub">See our latest results & updates</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <div class="footer-logo">S&amp;M Signature Aesthetics</div>
+    <div class="footer-rights" data-i18n="footer_rights">© 2026 S&M Signature Aesthetics. All rights reserved.</div>
+    <div class="footer-social">
+      <a href="#" aria-label="Instagram">📸</a>
+      <a href="#" aria-label="WhatsApp">💬</a>
+    </div>
+  </footer>
+
+<script>
+// ═══ LOGO BASE64 ═══
+(function() {
+  const logoB64 = 'LOGO_BASE64_PLACEHOLDER';
+  const src = 'data:image/jpeg;base64,' + logoB64;
+  document.getElementById('logoImg').src = src;
+  document.getElementById('overviewLogo').src = src;
+  const heroLogo = document.getElementById('heroLogoImg'); if(heroLogo) heroLogo.src = src;
+})();
+
+// ═══ HEADER SCROLL ═══
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// ═══ MOBILE MENU ═══
+const menuToggle = document.getElementById('menuToggle');
+const mobileNav = document.getElementById('mobileNav');
+const mobileOverlay = document.getElementById('mobileOverlay');
+const mobileClose = document.getElementById('mobileClose');
+
+function openMenu() {
+  mobileNav.classList.add('active');
+  mobileOverlay.style.display = 'block';
+  setTimeout(() => mobileOverlay.classList.add('active'), 10);
+}
+function closeMenu() {
+  mobileNav.classList.remove('active');
+  mobileOverlay.classList.remove('active');
+  setTimeout(() => mobileOverlay.style.display = 'none', 300);
+}
+menuToggle.addEventListener('click', openMenu);
+mobileClose.addEventListener('click', closeMenu);
+mobileOverlay.addEventListener('click', closeMenu);
+mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+// ═══ REVEAL ON SCROLL ═══
+const reveals = document.querySelectorAll('.reveal');
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.12 });
+reveals.forEach(el => ro.observe(el));
+
+// ═══ FAQ ═══
+document.querySelectorAll('.faq-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('expanded');
+    document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('expanded'); i.querySelector('.faq-icon').textContent = '+'; });
+    if (!wasOpen) { item.classList.add('expanded'); btn.querySelector('.faq-icon').textContent = '−'; }
+  });
+});
+
+// ═══ CALENDAR ═══
+const months = { en: ['January','February','March','April','May','June','July','August','September','October','November','December'], ar: ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'], he: ['ינואר','פברואר','מרץ','אפריל','מאי','יוני','יולי','אוגוסט','ספטמבר','אוקטובר','נובמבר','דצמבר'] };
+const times = ['09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00'];
+let curDate = new Date(), selectedDate = null, selectedTime = null;
+
+function renderCal() {
+  const lang = document.documentElement.lang || 'en';
+  const y = curDate.getFullYear(), m = curDate.getMonth();
+  const calMonthEl = document.getElementById('calMonth');
+  calMonthEl.textContent = (months[lang] || months.en)[m] + ' ' + y;
+
+  const today = new Date(); today.setHours(0,0,0,0);
+  const first = new Date(y, m, 1).getDay();
+  const days = new Date(y, m+1, 0).getDate();
+  const grid = document.getElementById('calDates');
+  grid.innerHTML = '';
+
+  for (let i = 0; i < first; i++) {
+    const d = document.createElement('div'); d.className = 'cal-day empty'; grid.appendChild(d);
+  }
+  for (let day = 1; day <= days; day++) {
+    const date = new Date(y, m, day);
+    const d = document.createElement('div');
+    d.textContent = day;
+    d.className = 'cal-day';
+    if (date < today) { d.classList.add('past'); }
+    else if (Math.random() > 0.35) {
+      d.classList.add('available');
+      d.addEventListener('click', () => selectDay(date, d));
+    } else { d.classList.add('unavailable'); }
+    if (date.getTime() === today.getTime()) d.classList.add('today');
+    grid.appendChild(d);
+  }
+  document.getElementById('calPrev').disabled = (new Date(y, m, 1) <= new Date(today.getFullYear(), today.getMonth(), 1));
+}
+
+function selectDay(date, el) {
+  document.querySelectorAll('.cal-day').forEach(d => d.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedDate = date;
+  selectedTime = null;
+  document.getElementById('calConfirm').classList.remove('active');
+
+  const lang = document.documentElement.lang || 'en';
+  const slotsEl = document.getElementById('calSlots');
+  slotsEl.innerHTML = '';
+  times.forEach(t => {
+    const s = document.createElement('div');
+    s.className = 'cal-slot';
+    s.textContent = t;
+    s.addEventListener('click', () => {
+      document.querySelectorAll('.cal-slot').forEach(sl => sl.classList.remove('selected'));
+      s.classList.add('selected');
+      selectedTime = t;
+      document.getElementById('calConfirm').classList.add('active');
+    });
+    slotsEl.appendChild(s);
+  });
+  document.getElementById('calTimes').classList.add('active');
+}
+
+document.getElementById('calPrev').addEventListener('click', () => {
+  curDate.setMonth(curDate.getMonth()-1); selectedDate = null;
+  document.getElementById('calTimes').classList.remove('active');
+  document.getElementById('calConfirm').classList.remove('active');
+  renderCal();
+});
+document.getElementById('calNext').addEventListener('click', () => {
+  curDate.setMonth(curDate.getMonth()+1); selectedDate = null;
+  document.getElementById('calTimes').classList.remove('active');
+  document.getElementById('calConfirm').classList.remove('active');
+  renderCal();
+});
+
+renderCal();
+
+// ═══ I18N ═══
+const RTL = new Set(['ar', 'he']);
+const tr = {
+  ar: {
+    nav_overview:'نظرة عامة', nav_services:'الخدمات', nav_results:'النتائج', nav_book:'احجز', nav_faqs:'الأسئلة', nav_contact:'اتصل بنا',
+    hero_eyebrow:'طب التجميل المعتمد', hero_line1:'اكتشف', hero_line2:' جمالك', hero_line3:'بثقة وإتقان',
+    hero_sub:'حقن البوتوكس، الفيلر، تجديد البشرة وعلاجات تجميلية متقدمة — يجريها متخصصون معتمدون في عيادة خاصة راقية.',
+    hero_cta:'احجز استشارة', hero_cta2:'مشاهدة الخدمات',
+    stat1:'عميل سعيد', stat2:'عيادة مُقيَّمة', stat3:'علاجات',
+    about_label:'عن العيادة', about_title:'دقة وجمال.\nنتائج\nمدعومة علمياً.',
+    about_body:'عيادة S&M Signature Aesthetics عيادة تجميل طبي متميزة تقدم أحدث العلاجات غير الجراحية. متخصصونا الموثقون يجمعون بين الخبرة الطبية والذوق الفني لتحقيق نتائج طبيعية ومذهلة.',
+    p1_title:'أطباء معتمدون', p1_desc:'متخصصون مؤهلون بخبرات واسعة في الطب التجميلي.',
+    p2_title:'نتائج طبيعية', p2_desc:'تحسينات دقيقة تبرز جمالك الطبيعي.',
+    p3_title:'أحدث التقنيات', p3_desc:'أجهزة متطورة وعلاجات معتمدة فقط.',
+    p4_title:'منتجات فاخرة', p4_desc:'مواد ملء وسموم وعلاجات بشرة من أعلى الدرجات.',
+    services_label:'ما نقدمه', services_title:'علاجاتنا', services_sub:'كل علاج مُصمم خصيصاً لبنية وجهك وأهدافك الجمالية.',
+    s1_name:'بوتوكس', s1_desc:'تنعيم الخطوط والتجاعيد بحقن دقيقة. الجبهة، الحاجبين، حواف العين — نتائج 4–6 أشهر.',
+    s2_name:'الفيلر الجلدي', s2_desc:'حمض الهيالورونيك للشفاه والخدين والفك والعيون. نحت ورفع ملامح الوجه بنتائج طبيعية.',
+    s3_name:'الميكرونيدلينج', s3_desc:'علاج متطور لتحفيز الكولاجين. يحسّن الملمس والمسام والندوب وجودة البشرة.',
+    s4_name:'علاج زرعي السلمون', s4_desc:'حقن البولينوكليوتيدات لإصلاح البشرة خلوياً. يستهدف التجاعيد والمرونة والترطيب العميق.',
+    s5_name:'شد الجلد', s5_desc:'خيارات غير جراحية لشد الجلد المترهل. رفع الوجه والرقبة بدون توقف عن الحياة اليومية.',
+    s6_name:'استعادة الشعر', s6_desc:'علاجات PRP والميزوثيرابي لتحفيز بصيلات الشعر وتعزيز النمو الصحي.',
+    results_label:'تحولات حقيقية', results_title:'قبل وبعد', results_sub:'كل نتيجة تعكس رحلة نحو ثقة أكبر بالنفس.',
+    r1_name:'تكبير الشفاه', r1_detail:'حجم طبيعي · جلسة واحدة · صفر توقف',
+    r2_name:'تنعيم الجبهة', r2_detail:'إزالة الخطوط · جلسة واحدة · نتيجة في أسبوعين',
+    r3_name:'نمو الشعر', r3_detail:'علاج PRP · 3 جلسات · نمو ملحوظ',
+    results_note:'* النتائج الفردية تتفاوت. جميع العلاجات يجريها متخصصون معتمدون.',
+    booking_label:'احجز زيارتك', booking_title:'احجز\nموعدك', booking_body:'اختر التاريخ والوقت المناسبَين لك. جميع الاستشارات خاصة وسرية ودون أي التزام.',
+    bd1:'استشارة أولى مجانية — بدون التزام', bd2:'بيئة عيادة خاصة وسرية', bd3:'خطة علاج مصممة حسب أهدافك', bd4:'تأكيد عبر واتساب أو البريد الإلكتروني', bd5:'إعادة جدولة أو إلغاء سهل في أي وقت',
+    prefer_call:'تفضّل الاتصال أولاً؟',
+    select_time:'اختر وقتاً', confirm_btn:'تأكيد الموعد', cal_note:'* معاينة فقط. يُؤكَّد الحجز عبر واتساب.',
+    d_sun:"أحد", d_mon:"إثنين", d_tue:"ثلاثاء", d_wed:"أربعاء", d_thu:"خميس", d_fri:"جمعة", d_sat:"سبت",
+    faq_label:'أسئلة شائعة', faq_title:'الأسئلة الشائعة', faq_sub:'كل ما تحتاج معرفته قبل زيارتك الأولى.',
+    fq1:'هل البوتوكس مؤلم؟', fa1:'حقن البوتوكس ذات ألم بسيط — معظم العملاء يصفون وخزة خفيفة. نستخدم إبراً دقيقة جداً.',
+    fq2:'كم تدوم النتائج؟', fa2:'نتائج البوتوكس 4–6 أشهر. الفيلر 9–18 شهراً حسب المنطقة.',
+    fq3:'هل هناك فترة نقاهة؟', fa3:'معظم العلاجات غير جراحية ودون توقف يذكر. يمكنك العودة لأنشطتك فوراً.',
+    fq4:'هل العلاجات آمنة؟', fa4:'تماماً. تجريها أطباء معتمدون بمنتجات معتمدة من FDA.',
+    fq5:'كيف أستعد للموعد؟', fa5:'أحضر بوجه نظيف وتجنب مضادات التخثر قبل 3 أيام والكحول قبل 24 ساعة.',
+    fq6:'ما سياسة الإلغاء؟', fa6:'نطلب إشعاراً قبل 24 ساعة للإلغاء أو إعادة الجدولة عبر واتساب.',
+    contact_label:'تواصل معنا', contact_title:'زرنا أو\nتواصل معنا',
+    c_phone:'هاتف / واتساب', c_phone_sub:'متاح الأحد–الجمعة، 9ص–7م',
+    c_location:'الموقع', c_location_val:'كفر قرع، منطقة بنيامينا', c_location_sub:'عيادة خاصة · بموعد مسبق فقط',
+    c_ig_sub:'تابع أحدث نتائجنا وتحديثاتنا',
+    footer_rights:'© 2026 S&M Signature Aesthetics. جميع الحقوق محفوظة.',
+    results_note: '* النتائج الفردية تتفاوت. جميع العلاجات يجريها متخصصون معتمدون.'
+  },
+  he: {
+    nav_overview:'סקירה', nav_services:'טיפולים', nav_results:'תוצאות', nav_book:'הזמנה', nav_faqs:'שאלות', nav_contact:'צור קשר',
+    hero_eyebrow:'רפואה אסתטית מוסמכת', hero_line1:'גלה את', hero_line2:' עצמך הטוב', hero_line3:'ביותר',
+    hero_sub:'בוטוקס, פילרים, התחדשות עור וטיפולים אסתטיים מתקדמים — מבוצעים ע"י מומחים מוסמכים בסביבת קליניקה פרטית מפוארת.',
+    hero_cta:'הזמן ייעוץ', hero_cta2:'לטיפולים',
+    stat1:'לקוחות מרוצים', stat2:'קליניקה מדורגת', stat3:'טיפולים',
+    about_label:'על הקליניקה', about_title:'דיוק ויופי.\nתוצאות\nמגובות מדעית.',
+    about_body:'S&M Signature Aesthetics היא קליניקה אסתטית רפואית מובחרת המציעה את הטיפולים הלא-כירורגיים האחרונים. המומחים המוסמכים שלנו משלבים מומחיות רפואית עם עין אמנותית.',
+    p1_title:'רופאים מוסמכים', p1_desc:'מומחים מוסמכים עם ניסיון עשיר ברפואה אסתטית.',
+    p2_title:'תוצאות טבעיות', p2_desc:'שיפורים עדינים שמדגישים את יופייך הטבעי.',
+    p3_title:'טכנולוגיה מתקדמת', p3_desc:'ציוד חדישני וטיפולים מאושרי FDA בלבד.',
+    p4_title:'מוצרים פרימיום', p4_desc:'פילרים, רעלים וטיפולי עור מהמדרגה הראשונה.',
+    services_label:'מה אנחנו מציעים', services_title:'הטיפולים שלנו', services_sub:'כל טיפול מותאם אישית למבנה הפנים ולמטרות האסתטיות שלך.',
+    s1_name:'בוטוקס', s1_desc:'החלקת קמטים ועיצוב פנים בזריקות מדויקות. מצח, בין הגבות, ליד העיניים — תוצאות ל-4–6 חודשים.',
+    s2_name:'פילרים דרמליים', s2_desc:'חומצה היאלורונית לשפתיים, לחיים, קו הלסת ועיניים. פיסול ונפח עם תוצאות טבעיות.',
+    s3_name:'מיקרונידלינג', s3_desc:'טיפול מתקדם לגירוי קולגן. משפר מרקם, נקבוביות, צלקות ואיכות עור כללית.',
+    s4_name:'טיפול זרעי סלמון', s4_desc:'זריקות פולינוקלאוטידים לתיקון והתחדשות עור ברמה תאית. עמוק ויעיל.',
+    s5_name:'הידוק עור', s5_desc:'אפשרויות לא-פולשניות להידוק עור רפוי. הרמת פנים וצוואר ללא ניתוח.',
+    s6_name:'שיקום שיער', s6_desc:'טיפולי PRP ומזותרפיה לגירוי זקיקי שיער וקידום גדילה בריאה.',
+    results_label:'שינויים אמיתיים', results_title:'לפני ואחרי', results_sub:'כל תוצאה מייצגת מסע לקראת ביטחון עצמי גדול יותר.',
+    r1_name:'הגדלת שפתיים', r1_detail:'נפח טבעי · טיפול אחד · אפס השבתה',
+    r2_name:'החלקת המצח', r2_detail:'הסרת קמטים · טיפול אחד · תוצאה בשבועיים',
+    r3_name:'צמיחת שיער', r3_detail:'טיפול PRP · 3 טיפולים · צמיחה גלויה',
+    results_note:'* תוצאות אינדיבידואליות עשויות להשתנות. כל הטיפולים מבוצעים ע"י מומחים מוסמכים.',
+    booking_label:'הזמן ביקור', booking_title:'הזמן\nתור', booking_body:'בחר תאריך ושעה שמתאימים לך. כל הייעוצים פרטיים, חסויים וללא התחייבות.',
+    bd1:'ייעוץ ראשוני חינם — ללא התחייבות', bd2:'סביבת קליניקה פרטית וחסויה', bd3:'תכנית טיפול מותאמת למטרותיך', bd4:'אישור בוואטסאפ או אימייל', bd5:'שינוי מועד או ביטול קל בכל עת',
+    prefer_call:'מעדיף לדבר קודם?',
+    select_time:'בחר שעה', confirm_btn:'אשר תור', cal_note:'* תצוגה מקדימה. ההזמנה תאושר בוואטסאפ.',
+    d_sun:"א'", d_mon:"ב'", d_tue:"ג'", d_wed:"ד'", d_thu:"ה'", d_fri:"ו'", d_sat:"ש'",
+    faq_label:'שאלות נפוצות', faq_title:'שאלות נפוצות', faq_sub:'כל מה שצריך לדעת לפני הביקור הראשון.',
+    fq1:'האם בוטוקס כואב?', fa1:'הזריקות כרוכות באי-נוחות מינימלית — רוב הלקוחות מתארים עקצוץ קל. אנחנו משתמשים במחטים דקות במיוחד.',
+    fq2:'כמה זמן התוצאות נמשכות?', fa2:'תוצאות בוטוקס נמשכות בדרך כלל 4–6 חודשים. פילרים יכולים להחזיק 9–18 חודשים.',
+    fq3:'האם יש השבתה?', fa3:'רוב הטיפולים לא פולשניים עם אפס השבתה. ניתן לחזור לשגרה מיידית.',
+    fq4:'האם הטיפולים בטוחים?', fa4:'בהחלט. כל הטיפולים מבוצעים ע"י רופאים מוסמכים עם מוצרים מאושרי FDA.',
+    fq5:'כיצד להתכונן לתור?', fa5:'הגע עם פנים נקיות, הימנע ממדללי דם 3 ימים לפני ומאלכוהול 24 שעות לפני.',
+    fq6:'מה מדיניות הביטולים?', fa6:'אנחנו מבקשים הודעה 24 שעות מראש לביטול או שינוי מועד.',
+    contact_label:'צור קשר', contact_title:'בקר אותנו\nאו צור קשר',
+    c_phone:'טלפון / וואטסאפ', c_phone_sub:'זמין א\'-ו\', 9:00–19:00',
+    c_location:'מיקום', c_location_val:'כפר קרע, אזור בנימינה', c_location_sub:'קליניקה פרטית · בתיאום מראש בלבד',
+    c_ig_sub:'ראה תוצאות ועדכונים אחרונים',
+    footer_rights:'© 2026 S&M Signature Aesthetics. כל הזכויות שמורות.'
+  },
+  en: {
+    nav_overview:'Overview', nav_services:'Services', nav_results:'Results', nav_book:'Book', nav_faqs:'FAQs', nav_contact:'Contact',
+    hero_eyebrow:'Certified Aesthetic Medicine', hero_line1:'Reveal Your', hero_line2:' Best Self', hero_line3:'with Confidence',
+    hero_sub:'Botox, fillers, skin rejuvenation & advanced aesthetic treatments — performed by certified specialists in a luxurious, private clinic setting.',
+    hero_cta:'Book a Consultation', hero_cta2:'View Services',
+    stat1:'Happy Clients', stat2:'Rated Clinic', stat3:'Treatments',
+    about_label:'About the Clinic', about_title:'Precision Beauty. Science-Backed Results.',
+    about_body:"S&M Signature Aesthetics is a premium medical aesthetic clinic offering the latest non-surgical treatments. Our certified specialists combine medical expertise with an artistic eye — delivering natural, stunning results tailored to each individual.",
+    p1_title:'Certified Doctors', p1_desc:'Board-certified specialists with extensive aesthetic medicine experience.',
+    p2_title:'Natural Results', p2_desc:'Subtle enhancements that highlight your natural beauty.',
+    p3_title:'Latest Technology', p3_desc:'State-of-the-art equipment and FDA-approved treatments only.',
+    p4_title:'Premium Products', p4_desc:'Top-grade fillers, toxins, and skincare formulations.',
+    services_label:'What We Offer', services_title:'Our Treatments', services_sub:'Every treatment is customized to your unique facial structure and aesthetic goals.',
+    s1_name:'Botox & Toxins', s1_desc:'Smooth fine lines and wrinkles with precision-placed injections. Forehead, frown lines, crow\'s feet — results last 4–6 months.',
+    s2_name:'Dermal Fillers', s2_desc:'Hyaluronic acid fillers for lips, cheeks, jawline, and under-eyes. Sculpt, volumize, and restore youthful contours.',
+    s3_name:'Microneedling', s3_desc:'Advanced collagen-induction therapy. Improves texture, pores, scars, and overall skin quality.',
+    s4_name:'Salmon DNA Therapy', s4_desc:'Polynucleotide injections that repair and regenerate skin at a cellular level. Deep hydration and rejuvenation.',
+    s5_name:'Skin Tightening', s5_desc:'Non-invasive options to firm sagging skin. Lift your face and neck with zero downtime.',
+    s6_name:'Hair Restoration', s6_desc:'PRP and mesotherapy treatments to stimulate hair follicles and promote healthy regrowth.',
+    results_label:'Real Transformations', results_title:'Before & After', results_sub:'Each result represents a journey toward greater confidence. Our natural approach ensures stunning, harmonious results.',
+    r1_name:'Lip Augmentation', r1_detail:'Natural volume · 1 session · 0 downtime',
+    r2_name:'Forehead Smoothing', r2_detail:'Line removal · 1 session · 2 weeks result',
+    r3_name:'Hair Regrowth', r3_detail:'PRP treatment · 3 sessions · visible growth',
+    results_note:'* Individual results may vary. All treatments performed by certified specialists.',
+    booking_label:'Reserve Your Visit', booking_title:'Book Your Appointment', booking_body:'Select a date and time that suits you. All consultations are private, confidential, and with no commitment required.',
+    bd1:'Free initial consultation — no obligation', bd2:'Private, discreet clinic environment', bd3:'Treatment plan tailored to your goals', bd4:'Confirmation sent via WhatsApp or email', bd5:'Easy reschedule or cancel anytime',
+    prefer_call:'Prefer to call first?',
+    select_time:'Select a time', confirm_btn:'Confirm Appointment', cal_note:'* Preview only. Booking confirmed via WhatsApp.',
+    d_sun:'Sun', d_mon:'Mon', d_tue:'Tue', d_wed:'Wed', d_thu:'Thu', d_fri:'Fri', d_sat:'Sat',
+    faq_label:'Common Questions', faq_title:'FAQs', faq_sub:'Everything you need to know before your first visit.',
+    fq1:'Does Botox hurt?', fa1:'Botox injections involve minimal discomfort — most clients describe a tiny pinch. We use ultra-fine needles and topical numbing cream.',
+    fq2:'How long do results last?', fa2:'Botox lasts 4–6 months. Dermal fillers can last 9–18 months depending on the area.',
+    fq3:'Is there any downtime?', fa3:'Most treatments are non-invasive with zero to minimal downtime. Return to daily activities immediately.',
+    fq4:'Are the treatments safe?', fa4:'Absolutely. All treatments performed by certified medical professionals using FDA-approved products.',
+    fq5:'How do I prepare?', fa5:'Arrive with a clean face, avoid blood-thinning medications 3 days prior and alcohol 24 hours before.',
+    fq6:'What is your cancellation policy?', fa6:'We kindly ask for 24 hours notice for cancellations or rescheduling via WhatsApp.',
+    contact_label:'Get In Touch', contact_title:'Visit Us or Contact Us',
+    c_phone:'Phone / WhatsApp', c_phone_sub:'Available Sun–Fri, 9am–7pm',
+    c_location:'Location', c_location_val:'Kafr Qara, Binyamina Area', c_location_sub:'Private clinic · by appointment only',
+    c_ig_sub:'See our latest results & updates',
+    footer_rights:'© 2026 S&M Signature Aesthetics. All rights reserved.'
+  }
+};
+
+function applyLang(lang) {
+  const dict = tr[lang] || tr.en;
+  const isRtl = RTL.has(lang);
+  document.documentElement.lang = lang;
+  document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (dict[k] != null) el.textContent = dict[k];
+  });
+  renderCal();
+}
+
+const langSel = document.getElementById('lang');
+const mobileLangSel = document.getElementById('mobileLang');
+const savedLang = localStorage.getItem('lang') || navigator.language?.split('-')[0] || 'ar';
+const initLang = tr[savedLang] ? savedLang : 'ar';
+langSel.value = initLang;
+mobileLangSel.value = initLang;
+applyLang(initLang);
+
+// ═══ PHOTO UPLOAD PREVIEW ═══
+function previewPhoto(input) {
+  if (!input.files || !input.files[0]) return;
+  const reader = new FileReader();
+  const card = input.closest('.result-photo');
+  const img = card.querySelector('.uploaded-img');
+  const placeholder = card.querySelector('.result-photo-placeholder');
+  reader.onload = e => {
+    img.src = e.target.result;
+    img.style.display = 'block';
+    placeholder.style.display = 'none';
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+langSel.addEventListener('change', e => { localStorage.setItem('lang', e.target.value); mobileLangSel.value = e.target.value; applyLang(e.target.value); });
+mobileLangSel.addEventListener('change', e => { localStorage.setItem('lang', e.target.value); langSel.value = e.target.value; applyLang(e.target.value); closeMenu(); });
+</script>
+</body>
+</html>
